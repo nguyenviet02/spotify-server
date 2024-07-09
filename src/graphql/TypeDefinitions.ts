@@ -5,19 +5,6 @@ export type Context = {
   user?: UserType,
 };
 
-const queryTypes = `
-  type Query {
-    me: User
-    user(id: ID!): User
-    users: [User]
-  }
-
-  type Mutation {
-    userAdd(name: String!, email: String!, password: String!): UserAuth
-    login(email: String!, password: String!): UserAuth
-  }
-`;
-
-const globalQuery = [userTypes, queryTypes];
+const globalQuery = [userTypes];
 
 export default globalQuery;
