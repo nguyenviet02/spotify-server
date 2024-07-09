@@ -1,0 +1,30 @@
+{
+  "name": "spotify-server",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "compile": "tsc",
+    "start": "npm run compile && node --experimental-specifier-resolution=node ./dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "@apollo/server": "^4.10.4",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "graphql": "^16.9.0",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.7",
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.14.10",
+    "typescript": "^5.5.3"
+  }
+}
