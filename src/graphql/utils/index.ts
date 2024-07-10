@@ -3,7 +3,9 @@ import { UserType } from '../user/UserTypes';
 import UserModel from '../user/UserModel';
 
 const JWT_SECRET = process.env.JWT_SECRET;
-export const generateToken = (user: UserType) => `Bearer ${jwt.sign({ data: user.email }, JWT_SECRET)}`;
+export const generateToken = (user: UserType) => `Bearer ${jwt.sign({ data: user.email }, JWT_SECRET, {
+	expiresIn: '1d',
+})}`;
 
 export const getUser = async (token: string) => {
   if (!token) {
