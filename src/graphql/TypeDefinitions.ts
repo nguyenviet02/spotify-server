@@ -1,10 +1,11 @@
 import userTypes from './user/UserTypes.js';
-import type { UserType } from './user/UserTypes.js';
+import authTypes from './auth/AuthTypes.js';
+import type { TUserType } from './user/UserTypes.js';
 
-export type Context = {
-  user?: UserType,
+export type TContext = {
+  user?: TUserType,
 };
 
-const globalQuery = [userTypes];
+const globalQuery = [userTypes, authTypes];
 
 export default globalQuery;

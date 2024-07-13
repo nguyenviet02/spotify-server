@@ -1,4 +1,4 @@
-export type UserType = {
+export type TUserType = {
   _id: unknown;
   name: string;
   email: string;
@@ -7,7 +7,7 @@ export type UserType = {
   gender: UserGender;
 };
 
-export type UserTypeInput = {
+export type TUserTypeInput = {
   input: {
     name: string;
     email: string;
@@ -17,11 +17,7 @@ export type UserTypeInput = {
   };
 };
 
-export type UserAuth = {
-  token: string;
-};
-
-export type UserLoginInput = {
+export type TUserLoginInput = {
   input: {
     email: string;
     password: string;
@@ -35,7 +31,7 @@ export enum UserGender {
   SECRET,
 }
 
-const userType = `
+const userTypes = `
 	scalar Date
 
   type User {
@@ -53,34 +49,12 @@ const userType = `
 		OTHERS
 		SECRET
 	}
-
-  type UserAuth {
-    token: String
-  }
 	
 	type Query {
     me: User
     user(_id: ID!): User
     users: [User]
   }
-
-	input UserInput {
-		name: String!
-		email: String!
-		password: String!
-		dateOfBirth: Date!
-		gender: Gender!
-	}
-
-	input UserLoginInput {
-		email: String!
-		password: String!
-	}
-
-  type Mutation {
-    register(input: UserInput): UserAuth
-    login(input: UserLoginInput): UserAuth
-  }
 `;
 
-export default userType;
+export default userTypes;
