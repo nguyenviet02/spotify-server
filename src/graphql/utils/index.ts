@@ -44,7 +44,6 @@ export const getUser = async (token: string, refreshToken: string, res: ServerRe
     };
   } catch (err) {
     const decodedRefreshToken = verifyRefreshToken(refreshToken);
-    console.log('☠️ ~ getUser ~ decodedRefreshToken:', decodedRefreshToken)
     if (!decodedRefreshToken) {
       return {
         user: null,

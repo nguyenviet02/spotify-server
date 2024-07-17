@@ -8,7 +8,7 @@ import connectToDB from './db/dbConnector';
 import { getUser } from './graphql/utils';
 
 // Khởi tạo server apollo
-const PORT = process.env.DEV_PORT;
+const PORT = process.env.PORT;
 const server = new ApolloServer({
   typeDefs: globalQuery,
   resolvers: globalResolvers,
