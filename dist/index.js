@@ -1,11 +1,11 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import 'dotenv/config';
-import globalQuery from './graphql/TypeDefinitions';
-import globalResolvers from './graphql/GlobalResolvers';
-import connectToDB from './db/dbConnector';
-import { getUser } from './graphql/utils';
-const PORT = process.env.DEV_PORT;
+import globalQuery from './graphql/TypeDefinitions.js';
+import globalResolvers from './graphql/GlobalResolvers.js';
+import connectToDB from './db/dbConnector.js';
+import { getUser } from './graphql/utils/index.js';
+const PORT = process.env.PORT;
 const server = new ApolloServer({
     typeDefs: globalQuery,
     resolvers: globalResolvers,

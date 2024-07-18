@@ -1,5 +1,5 @@
-import userResolvers from './user/UserResolvers';
-import authResolver from './auth/AuthResolvers';
+import userResolvers from './user/UserResolvers.js';
+import authResolver from './auth/AuthResolvers.js';
 
 const globalResolvers = {
   Query: {

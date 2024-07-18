@@ -1,6 +1,6 @@
-import UserModel from '../user/UserModel';
-import AuthModel from './AuthModel';
-import { generateRefreshToken, generateToken } from '../utils';
+import UserModel from '../user/UserModel.js';
+import AuthModel from './AuthModel.js';
+import { generateRefreshToken, generateToken } from '../utils/index.js';
 const authResolver = {
     Query: {},
     Mutation: {

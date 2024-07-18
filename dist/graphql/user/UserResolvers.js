@@ -1,5 +1,5 @@
-import UserModel from './UserModel';
-import dateScalar from '../custom-scalars';
+import UserModel from './UserModel.js';
+import dateScalar from '../custom-scalars/index.js';
 const userResolvers = {
     Date: dateScalar,
     Query: {

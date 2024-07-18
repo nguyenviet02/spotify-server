@@ -2,10 +2,10 @@ import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import 'dotenv/config';
 
-import globalQuery from './graphql/TypeDefinitions';
-import globalResolvers from './graphql/GlobalResolvers';
-import connectToDB from './db/dbConnector';
-import { getUser } from './graphql/utils';
+import globalQuery from './graphql/TypeDefinitions.js';
+import globalResolvers from './graphql/GlobalResolvers.js';
+import connectToDB from './db/dbConnector.js';
+import { getUser } from './graphql/utils/index.js';
 
 // Khởi tạo server apollo
 const PORT = process.env.PORT;

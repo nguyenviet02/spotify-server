@@ -1,7 +1,7 @@
 import jwt, { JwtPayload } from 'jsonwebtoken';
-import type { TUserType } from '../user/UserTypes';
-import UserModel from '../user/UserModel';
-import AuthModel from '../auth/AuthModel';
+import type { TUserType } from '../user/UserTypes.js';
+import UserModel from '../user/UserModel.js';
+import AuthModel from '../auth/AuthModel.js';
 import { ServerResponse } from 'http';
 
 const JWT_SECRET = process.env.JWT_SECRET;

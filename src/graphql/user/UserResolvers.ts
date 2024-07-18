@@ -1,7 +1,7 @@
-import UserModel from './UserModel';
-import type { TUserType } from './UserTypes';
-import type { TContext } from '../TypeDefinitions';
-import dateScalar from '../custom-scalars';
+import UserModel from './UserModel.js';
+import type { TUserType } from './UserTypes.js';
+import type { TContext } from '../TypeDefinitions.js';
+import dateScalar from '../custom-scalars/index.js';
 
 const userResolvers = {
   Date: dateScalar,

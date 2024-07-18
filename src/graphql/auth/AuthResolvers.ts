@@ -1,8 +1,8 @@
-import UserModel from '../user/UserModel';
-import AuthModel from './AuthModel';
-import type { TUserLoginInput, TUserTypeInput } from '../user/UserTypes';
-import type { TUserAuth } from './AuthTypes';
-import { generateRefreshToken, generateToken } from '../utils';
+import UserModel from '../user/UserModel.js';
+import AuthModel from './AuthModel.js';
+import type { TUserLoginInput, TUserTypeInput } from '../user/UserTypes.js';
+import type { TUserAuth } from './AuthTypes.js';
+import { generateRefreshToken, generateToken } from '../utils/index.js';
 
 const authResolver = {
   Query: {},

@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "compile": "tsc",
-    "start": "npm run compile && node --experimental-specifier-resolution=node ./dist/index.js"
+    "start": "npm run compile && node ./dist/index.js"
   },
   "author": "",
   "license": "ISC",

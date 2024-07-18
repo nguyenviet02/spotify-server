@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import UserModel from '../user/UserModel';
-import AuthModel from '../auth/AuthModel';
+import UserModel from '../user/UserModel.js';
+import AuthModel from '../auth/AuthModel.js';
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET;
 export const generateToken = (user) => `Bearer ${jwt.sign({ data: user?._id }, JWT_SECRET, {

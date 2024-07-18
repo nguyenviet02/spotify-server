@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
-import { UserGender } from './UserTypes';
+import { UserGender } from './UserTypes.js';
 
 interface UserInterface extends mongoose.Document {
   name: string;
