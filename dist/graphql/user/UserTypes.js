@@ -19,6 +19,8 @@ const userTypes = `
 		gender: Gender!
 		playlists: [ID]
 		likedSongs: [ID]
+		notGetMarketingMessage: Boolean
+		shareData: Boolean
   }
 
 	enum Gender {

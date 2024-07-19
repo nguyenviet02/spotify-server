@@ -36,6 +36,14 @@ const Schema = new mongoose.Schema({
         type: [String],
         default: [],
     },
+    notGetMarketingMessage: {
+        type: Boolean,
+        default: false,
+    },
+    shareData: {
+        type: Boolean,
+        default: true,
+    },
 }, {
     timestamps: {
         createdAt: 'createdAt',
