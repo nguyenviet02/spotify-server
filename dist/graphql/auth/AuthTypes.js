@@ -5,8 +5,9 @@ const authTypes = `
   }
 	
 	input UserInput {
-		name: String!
-		email: String!
+		displayName: String!
+		email: String
+		phoneNumber: String
 		password: String!
 		dateOfBirth: Date!
 		gender: Gender!

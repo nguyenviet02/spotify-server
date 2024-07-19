@@ -1,16 +1,20 @@
 export type TUserType = {
   _id: unknown;
-  name: string;
-  email: string;
+  displayName: string;
+  email?: string;
+	phoneNumber?: string;
   password: string;
   dateOfBirth: Date;
   gender: UserGender;
+	playlists?: string[];
+	likedSongs?: string[];
 };
 
 export type TUserTypeInput = {
   input: {
-    name: string;
-    email: string;
+    displayName: string;
+    email?: string;
+		phoneNumber?: string;
     password: string;
     dateOfBirth: Date;
     gender: UserGender;
@@ -27,6 +31,7 @@ export type TUserLoginInput = {
 export enum UserGender {
   MALE,
   FEMALE,
+	NO_GENDER,
   OTHERS,
   SECRET,
 }
@@ -36,16 +41,20 @@ const userTypes = `
 
   type User {
 		_id: ID!
-    name: String!
-    email: String!
-		password: String
-		dateOfBirth: Date
+    displayName: String!
+    email: String
+		phoneNumber: String
+		password: String!
+		dateOfBirth: Date!
 		gender: Gender!
+		playlists: [ID]
+		likedSongs: [ID]
   }
 
 	enum Gender {
 		MALE
 		FEMALE
+		NO_GENDER
 		OTHERS
 		SECRET
 	}

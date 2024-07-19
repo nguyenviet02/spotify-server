@@ -2,29 +2,36 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import { UserGender } from './UserTypes.js';
 
-interface UserInterface extends mongoose.Document {
-  name: string;
-  password: string;
+interface IUserSchema extends mongoose.Document {
+  displayName: string;
   email: string;
-	dateOfBirth: Date;
-	gender: UserGender;
+  phoneNumber: string;
+  password: string;
+  dateOfBirth: Date;
+  gender: UserGender;
+  playlists: string[];
+  likedSongs: string[];
   encryptPassword(password: string): string;
   authenticate(plainTextPassword: string): boolean;
 }
 
 const Schema = new mongoose.Schema(
   {
-    name: {
+    displayName: {
       type: String,
       required: true,
     },
     email: {
       type: String,
-      required: false,
       index: true,
     },
+		phoneNumber: {
+			type: String,
+			index: true,
+		},
     password: {
       type: String,
+			required: true,
       hidden: true,
     },
     dateOfBirth: {
@@ -33,8 +40,16 @@ const Schema = new mongoose.Schema(
     },
     gender: {
       type: String,
-			enum: UserGender,
+      enum: UserGender,
       required: true,
+    },
+    playlists: {
+      type: [String],
+      default: [],
+    },
+    likedSongs: {
+      type: [String],
+      default: [],
     },
   },
   {
@@ -55,7 +70,7 @@ Schema.methods = {
   },
 };
 
-Schema.pre<UserInterface>('save', function (next) {
+Schema.pre<IUserSchema>('save', function (next) {
   // Hash the password]
   const user = this;
   if (user.isModified('password')) {
@@ -65,4 +80,4 @@ Schema.pre<UserInterface>('save', function (next) {
   return next();
 });
 
-export default mongoose.model<UserInterface>('User', Schema);
+export default mongoose.model<IUserSchema>('User', Schema);

@@ -2,24 +2,29 @@ export var UserGender;
 (function (UserGender) {
     UserGender[UserGender["MALE"] = 0] = "MALE";
     UserGender[UserGender["FEMALE"] = 1] = "FEMALE";
-    UserGender[UserGender["OTHERS"] = 2] = "OTHERS";
-    UserGender[UserGender["SECRET"] = 3] = "SECRET";
+    UserGender[UserGender["NO_GENDER"] = 2] = "NO_GENDER";
+    UserGender[UserGender["OTHERS"] = 3] = "OTHERS";
+    UserGender[UserGender["SECRET"] = 4] = "SECRET";
 })(UserGender || (UserGender = {}));
 const userTypes = `
 	scalar Date
 
   type User {
 		_id: ID!
-    name: String!
-    email: String!
-		password: String
-		dateOfBirth: Date
+    displayName: String!
+    email: String
+		phoneNumber: String
+		password: String!
+		dateOfBirth: Date!
 		gender: Gender!
+		playlists: [ID]
+		likedSongs: [ID]
   }
 
 	enum Gender {
 		MALE
 		FEMALE
+		NO_GENDER
 		OTHERS
 		SECRET
 	}

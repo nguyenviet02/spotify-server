@@ -2,17 +2,21 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import { UserGender } from './UserTypes.js';
 const Schema = new mongoose.Schema({
-    name: {
+    displayName: {
         type: String,
         required: true,
     },
     email: {
         type: String,
-        required: false,
+        index: true,
+    },
+    phoneNumber: {
+        type: String,
         index: true,
     },
     password: {
         type: String,
+        required: true,
         hidden: true,
     },
     dateOfBirth: {
@@ -23,6 +27,14 @@ const Schema = new mongoose.Schema({
         type: String,
         enum: UserGender,
         required: true,
+    },
+    playlists: {
+        type: [String],
+        default: [],
+    },
+    likedSongs: {
+        type: [String],
+        default: [],
     },
 }, {
     timestamps: {
