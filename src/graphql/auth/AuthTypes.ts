@@ -9,13 +9,15 @@ const authTypes = `
 		refreshToken: String
   }
 	
-	input UserInput {
+	input UserRegisterInput {
 		displayName: String!
 		email: String
 		phoneNumber: String
 		password: String!
 		dateOfBirth: Date!
 		gender: Gender!
+		notGetMarketingMessage: Boolean
+		shareData: Boolean
 	}
 
 	input UserLoginInput {
@@ -24,7 +26,7 @@ const authTypes = `
 	}
 
 	type Mutation {
-		register(input: UserInput): UserAuth
+		register(input: UserRegisterInput): UserAuth
     login(input: UserLoginInput): UserAuth
   }
 `;

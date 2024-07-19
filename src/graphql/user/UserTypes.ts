@@ -2,22 +2,26 @@ export type TUserType = {
   _id: unknown;
   displayName: string;
   email?: string;
-	phoneNumber?: string;
+  phoneNumber?: string;
   password: string;
   dateOfBirth: Date;
   gender: UserGender;
-	playlists?: string[];
-	likedSongs?: string[];
+  playlists?: string[];
+  likedSongs?: string[];
+  notGetMarketingMessage: boolean;
+  shareData: boolean;
 };
 
 export type TUserTypeInput = {
   input: {
     displayName: string;
     email?: string;
-		phoneNumber?: string;
+    phoneNumber?: string;
     password: string;
     dateOfBirth: Date;
     gender: UserGender;
+    notGetMarketingMessage: boolean;
+    shareData: boolean;
   };
 };
 
@@ -31,7 +35,7 @@ export type TUserLoginInput = {
 export enum UserGender {
   MALE,
   FEMALE,
-	NO_GENDER,
+  NO_GENDER,
   OTHERS,
   SECRET,
 }
@@ -49,6 +53,8 @@ const userTypes = `
 		gender: Gender!
 		playlists: [ID]
 		likedSongs: [ID]
+		notGetMarketingMessage: Boolean
+		shareData: Boolean
   }
 
 	enum Gender {

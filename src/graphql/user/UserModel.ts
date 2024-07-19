@@ -11,6 +11,8 @@ interface IUserSchema extends mongoose.Document {
   gender: UserGender;
   playlists: string[];
   likedSongs: string[];
+  notGetMarketingMessage: boolean;
+  shareData: boolean;
   encryptPassword(password: string): string;
   authenticate(plainTextPassword: string): boolean;
 }
@@ -25,13 +27,13 @@ const Schema = new mongoose.Schema(
       type: String,
       index: true,
     },
-		phoneNumber: {
-			type: String,
-			index: true,
-		},
+    phoneNumber: {
+      type: String,
+      index: true,
+    },
     password: {
       type: String,
-			required: true,
+      required: true,
       hidden: true,
     },
     dateOfBirth: {
@@ -50,6 +52,14 @@ const Schema = new mongoose.Schema(
     likedSongs: {
       type: [String],
       default: [],
+    },
+    notGetMarketingMessage: {
+      type: Boolean,
+      default: false,
+    },
+    shareData: {
+      type: Boolean,
+      default: true,
     },
   },
   {
