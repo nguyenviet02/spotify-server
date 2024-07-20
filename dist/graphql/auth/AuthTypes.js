@@ -11,8 +11,8 @@ const authTypes = `
 		password: String!
 		dateOfBirth: Date!
 		gender: Gender!
-		notGetMarketingMessage: Boolean
-		shareData: Boolean
+		notGetMarketingMessage: Boolean!
+		shareData: Boolean!
 	}
 
 	input UserLoginInput {
