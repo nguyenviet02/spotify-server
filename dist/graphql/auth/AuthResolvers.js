@@ -29,6 +29,12 @@ const authResolver = {
             const refreshToken = generateRefreshToken(user?._id);
             return { token, refreshToken };
         },
+        async user_checkExistUser(_, params) {
+            const { email, phoneNumber } = params?.input;
+            const emailExist = await UserModel.exists({ email });
+            const phoneNumberExist = await UserModel.exists({ phoneNumber });
+            return { email: !!emailExist, phoneNumber: !!phoneNumberExist };
+        },
     },
 };
 export default authResolver;

@@ -14,26 +14,6 @@ export type TUserType = {
   shareData: boolean;
 };
 
-export type TUserTypeInput = {
-  input: {
-    displayName: string;
-    email?: string;
-    phoneNumber?: string;
-    password: string;
-    dateOfBirth: Date;
-    gender: UserGender;
-    notGetMarketingMessage: boolean;
-    shareData: boolean;
-  };
-};
-
-export type TUserLoginInput = {
-  input: {
-    email: string;
-    password: string;
-  };
-};
-
 export enum UserGender {
   MALE,
   FEMALE,

@@ -1,6 +1,35 @@
+import { UserGender } from "../user/UserTypes";
+
 export type TUserAuth = {
   token: string;
   refreshToken: string;
+};
+
+export type TUserTypeInput = {
+  input: {
+    displayName: string;
+    email?: string;
+    phoneNumber?: string;
+    password: string;
+    dateOfBirth: Date;
+    gender: UserGender;
+    notGetMarketingMessage: boolean;
+    shareData: boolean;
+  };
+};
+
+export type TUserLoginInput = {
+  input: {
+    email: string;
+    password: string;
+  };
+};
+
+export type TCheckExistUserInput = {
+	input: {
+		email?: string;
+		phoneNumber?: string;
+	};
 };
 
 const authTypes = `
@@ -8,6 +37,16 @@ const authTypes = `
   	token: String
 		refreshToken: String
   }
+
+	type CheckExistUser {
+		email: Boolean
+		phoneNumber: Boolean
+	}
+
+	input CheckExistUserInput {
+		email: String
+		phoneNumber: String
+	}
 	
 	input UserRegisterInput {
 		displayName: String!
@@ -28,6 +67,7 @@ const authTypes = `
 	type Mutation {
 		user_register(input: UserRegisterInput): UserAuth
     user_login(input: UserLoginInput): UserAuth
+		user_checkExistUser(input: CheckExistUserInput): CheckExistUser
   }
 `;
 

@@ -1,7 +1,6 @@
 import UserModel from '../user/UserModel.js';
 import AuthModel from './AuthModel.js';
-import type { TUserLoginInput, TUserTypeInput } from '../user/UserTypes.js';
-import type { TUserAuth } from './AuthTypes.js';
+import type { TCheckExistUserInput, TUserAuth, TUserLoginInput, TUserTypeInput } from './AuthTypes.js';
 import { generateRefreshToken, generateToken } from '../utils/index.js';
 
 const authResolver = {
@@ -24,12 +23,20 @@ const authResolver = {
       }
       return { token, refreshToken };
     },
+
     async user_register(_: any, params: TUserTypeInput): Promise<TUserAuth> {
       const user = new UserModel({ ...params.input });
       await user.save();
       const token = generateToken(user?._id);
       const refreshToken = generateRefreshToken(user?._id);
       return { token, refreshToken };
+    },
+
+    async user_checkExistUser(_: any, params: TCheckExistUserInput) {
+      const { email, phoneNumber } = params?.input;
+      const emailExist = await UserModel.exists({ email });
+      const phoneNumberExist = await UserModel.exists({ phoneNumber });
+      return { email: !!emailExist, phoneNumber: !!phoneNumberExist };
     },
   },
 };
