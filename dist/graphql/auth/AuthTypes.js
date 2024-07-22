@@ -21,8 +21,8 @@ const authTypes = `
 	}
 
 	type Mutation {
-		register(input: UserRegisterInput): UserAuth
-    login(input: UserLoginInput): UserAuth
+		User_register(input: UserRegisterInput): UserAuth
+    User_login(input: UserLoginInput): UserAuth
   }
 `;
 export default authTypes;

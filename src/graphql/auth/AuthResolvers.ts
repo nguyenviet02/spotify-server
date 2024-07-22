@@ -7,7 +7,7 @@ import { generateRefreshToken, generateToken } from '../utils/index.js';
 const authResolver = {
   Query: {},
   Mutation: {
-    async login(_: any, params: TUserLoginInput): Promise<TUserAuth> {
+    async User_login(_: any, params: TUserLoginInput): Promise<TUserAuth> {
       const { email, password } = params.input;
       const user = await UserModel.findOne({ email });
       if (!user || !user.authenticate(password)) {
@@ -24,7 +24,7 @@ const authResolver = {
       }
       return { token, refreshToken };
     },
-    async register(_: any, params: TUserTypeInput): Promise<TUserAuth> {
+    async User_register(_: any, params: TUserTypeInput): Promise<TUserAuth> {
       const user = new UserModel({ ...params.input });
       await user.save();
       const token = generateToken(user);
