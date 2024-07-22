@@ -6,13 +6,13 @@ import dateScalar from '../custom-scalars/index.js';
 const userResolvers = {
   Date: dateScalar,
   Query: {
-    async me(_: TUserType, __: any, context: TContext): Promise<TUserType> {
+    async user_me(_: TUserType, __: any, context: TContext): Promise<TUserType> {
       return context.user;
     },
-    async user(_: TUserType, { _id }: { _id: string }): Promise<TUserType> {
+    async user_getUserById(_: TUserType, { _id }: { _id: string }): Promise<TUserType> {
       return UserModel.findById(_id);
     },
-    async users(): Promise<TUserType[]> {
+    async user_getUsers(): Promise<TUserType[]> {
       return await UserModel.find();
     },
   },

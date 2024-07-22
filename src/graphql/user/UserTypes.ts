@@ -66,9 +66,9 @@ const userTypes = `
 	}
 	
 	type Query {
-    me: User
-    user(_id: ID!): User
-    users: [User]
+    user_me: User
+    user_getUserById(_id: ID!): User
+    user_getUsers: [User]
   }
 `;
 
