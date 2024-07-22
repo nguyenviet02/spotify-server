@@ -10,8 +10,8 @@ const authResolver = {
             if (!user || !user.authenticate(password)) {
                 throw new Error('Invalid email or password');
             }
-            const token = generateToken(user);
-            const refreshToken = generateRefreshToken(user);
+            const token = generateToken(user?._id);
+            const refreshToken = generateRefreshToken(user?._id);
             const refreshTokenInDB = await AuthModel.findOne({ user: user._id });
             if (refreshTokenInDB) {
                 await refreshTokenInDB.updateOne({ refreshToken });
@@ -25,8 +25,8 @@ const authResolver = {
         async user_register(_, params) {
             const user = new UserModel({ ...params.input });
             await user.save();
-            const token = generateToken(user);
-            const refreshToken = generateRefreshToken(user);
+            const token = generateToken(user?._id);
+            const refreshToken = generateRefreshToken(user?._id);
             return { token, refreshToken };
         },
     },

@@ -3,16 +3,16 @@ import UserModel from '../user/UserModel.js';
 import AuthModel from '../auth/AuthModel.js';
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET;
-export const generateToken = (user) => `Bearer ${jwt.sign({ data: user?._id }, JWT_SECRET, {
-    expiresIn: '1d',
+export const generateToken = (userId) => `Bearer ${jwt.sign({ userId }, JWT_SECRET, {
+    expiresIn: '1m',
 })}`;
-export const generateRefreshToken = (user) => `Bearer ${jwt.sign({ data: user._id }, JWT_REFRESH_SECRET, {
+export const generateRefreshToken = (userId) => `Bearer ${jwt.sign({ userId }, JWT_REFRESH_SECRET, {
     expiresIn: '7d',
 })}`;
-export const verifyRefreshToken = (refreshToken) => {
+export const verifyRefreshToken = async (refreshToken) => {
     try {
-        const refreshTokenInDB = AuthModel.find({ refreshToken });
-        if (!refreshTokenInDB) {
+        const refreshTokenInDB = await AuthModel.exists({ refreshToken });
+        if (!refreshTokenInDB?._id) {
             return null;
         }
         return jwt.verify(refreshToken.substring(7), JWT_REFRESH_SECRET);
@@ -29,20 +29,24 @@ export const getUser = async (token, refreshToken, res) => {
     }
     try {
         const decodedToken = jwt.verify(token.substring(7), JWT_SECRET);
-        const user = await UserModel.findById(decodedToken.data);
+        const user = await UserModel.findById(decodedToken.userId);
         return {
             user,
         };
     }
     catch (err) {
-        const decodedRefreshToken = verifyRefreshToken(refreshToken);
-        if (!decodedRefreshToken) {
+        const decodedRefreshToken = await verifyRefreshToken(refreshToken);
+        if (!decodedRefreshToken?.userId) {
             return {
                 user: null,
             };
         }
-        const user = await UserModel.findById(decodedRefreshToken.data);
-        const newToken = generateToken(user);
+        const user = await UserModel.findById(decodedRefreshToken?.userId);
+        const newToken = generateToken(user?._id);
         res.setHeader('Authorization', newToken);
+        res.setHeader('Access-Control-Expose-Headers', 'Authorization');
+        return {
+            user,
+        };
     }
 };

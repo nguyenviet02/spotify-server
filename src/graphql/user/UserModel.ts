@@ -1,8 +1,9 @@
-import mongoose from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 import bcrypt from 'bcryptjs';
 import { UserGender } from './UserTypes.js';
 
 interface IUserSchema extends mongoose.Document {
+	_id: Types.ObjectId;
   displayName: string;
   email: string;
   phoneNumber: string;
