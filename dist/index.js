@@ -19,5 +19,5 @@ const { url } = await startStandaloneServer(server, {
         return user;
     },
 });
-connectToDB();
+await connectToDB();
 console.log(`🚀  Server ready at: ${url}`);

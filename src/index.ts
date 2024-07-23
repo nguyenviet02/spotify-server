@@ -24,6 +24,6 @@ const { url } = await startStandaloneServer(server, {
 });
 
 // Kết nối tới database
-connectToDB();
+await connectToDB();
 
 console.log(`🚀  Server ready at: ${url}`);
