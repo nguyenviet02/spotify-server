@@ -20,7 +20,7 @@ const server = new ApolloServer({
 await server.start();
 await connectToDB();
 app.use('/', cors({
-    origin: '*',
+    origin: true,
     credentials: true
 }), express.json({ limit: '50mb' }), expressMiddleware(server, {
     context: async ({ req, res }) => {

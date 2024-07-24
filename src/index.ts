@@ -32,7 +32,7 @@ await connectToDB();
 app.use(
   '/',
   cors<cors.CorsRequest>({
-		origin: '*',
+		origin: true,
 		credentials: true
 	}),
   express.json({ limit: '50mb' }),
