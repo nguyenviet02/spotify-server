@@ -21,9 +21,12 @@ await server.start();
 await connectToDB();
 app.use('/', cors({
     origin: true,
-    credentials: true
+    credentials: true,
 }), express.json({ limit: '50mb' }), expressMiddleware(server, {
     context: async ({ req, res }) => {
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+        res.header('Access-Control-Allow-Headers', 'Content-Type');
         const token = req.headers.authorization || '';
         const refreshToken = req.headers['x-refresh-token'];
         const user = await getUser(token, refreshToken, res);
