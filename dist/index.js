@@ -16,6 +16,7 @@ const server = new ApolloServer({
     typeDefs: globalQuery,
     resolvers: globalResolvers,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    introspection: true,
 });
 await server.start();
 await connectToDB();
