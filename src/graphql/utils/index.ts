@@ -3,6 +3,7 @@ import { Types } from 'mongoose';
 import UserModel from '../user/UserModel.js';
 import AuthModel from '../auth/AuthModel.js';
 import { ServerResponse } from 'http';
+import 'dotenv/config';
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET;

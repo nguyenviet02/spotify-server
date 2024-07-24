@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import UserModel from '../user/UserModel.js';
 import AuthModel from '../auth/AuthModel.js';
+import 'dotenv/config';
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET;
 export const generateToken = (userId) => `Bearer ${jwt.sign({ userId }, JWT_SECRET, {
