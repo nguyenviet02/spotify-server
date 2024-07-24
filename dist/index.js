@@ -9,6 +9,7 @@ const PORT = process.env.PORT;
 const server = new ApolloServer({
     typeDefs: globalQuery,
     resolvers: globalResolvers,
+    introspection: true,
 });
 const { url } = await startStandaloneServer(server, {
     listen: { port: Number(PORT) },
