@@ -31,5 +31,5 @@ app.use('/', cors({
         return user;
     },
 }));
-await new Promise((resolve) => httpServer.listen({ port: Number(PORT) }, resolve));
+await new Promise((resolve) => httpServer.listen({ port: Number(PORT), host: '0.0.0.0' }, resolve));
 console.log(`🚀 Server ready at http://localhost:${PORT}/`);
